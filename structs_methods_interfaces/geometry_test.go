@@ -1,40 +1,18 @@
 package main
 
 import (
-	"math"
 	"testing"
 )
 
-type Rectangle struct {
-	Width  float64
-	Height float64
-}
+func TestPerimeter(t *testing.T) {
+	rectangle := Rectangle{10.0, 10.0}
+	got := Perimeter(rectangle)
+	want := 40.0
 
-func (r Rectangle) Area() float64 {
-	return r.Width * r.Height
+	if got != want {
+		t.Errorf("got %g want %g", got, want)
+	}
 }
-
-type Circle struct {
-	Radius float64
-}
-
-func (c Circle) Area() float64 {
-	return c.Radius * c.Radius * math.Pi
-}
-
-type Triangle struct {
-	Base   float64
-	Height float64
-}
-
-func (t Triangle) Area() float64 {
-	return (t.Base * t.Height) * 0.5
-}
-
-type Shape interface {
-	Area() float64
-}
-
 func TestArea(t *testing.T) {
 
 	areaTests := []struct {
